@@ -1,0 +1,59 @@
+<template>
+    <lightning-card style="margin: 30px" title="Please enter Zip Code">
+        <div class="slds-card">
+            <div class="slds-card__body slds-card__body_inner">
+                <lightning-input
+                    max-length="5"
+                    pattern="[0-9]{5}"
+                    class="string"
+                    type="string"
+                    label="Zip Code"
+                    onchange={setZip}
+                >
+                </lightning-input>
+                <br />
+                <lightning-button
+                    class="button"
+                    label="Create Data"
+                    onclick={createData}
+                ></lightning-button>
+            </div>
+           
+            <template if:true={savedRecId}>
+                <br>
+                <div style="margin: 12px">
+                    <h1 style="padding-left: 3px; padding-bottom: 4px; font-size: medium">
+                        <b>Results:</b>
+                    </h1>
+                   
+                    <lightning-record-view-form
+                        record-id={savedRecId}
+                        object-api-name="Location_Identifier__c"
+                    >
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-output-field
+                                    field-name="City__c"
+                                ></lightning-output-field>
+                                <lightning-output-field
+                                    field-name="State__c"
+                                ></lightning-output-field>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-output-field
+                                    field-name="Country__c"
+                                ></lightning-output-field>
+                                <lightning-output-field
+                                    field-name="Zip_Code__c"
+                                ></lightning-output-field>
+                            </div>
+                        </div>
+                    </lightning-record-view-form>
+                </div>
+            </template>
+        </div>
+        <div if:true={showLoadingSpinner}>
+            <lightning-spinner alternative-text="Loading" size="large">
+            </lightning-spinner></div
+    ></lightning-card>
+</template>
