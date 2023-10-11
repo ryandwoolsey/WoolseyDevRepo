@@ -1,7 +1,12 @@
 import { LightningElement, wire, api, track } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import createLocationIdentifiers from "@salesforce/apex/ZipIntegrationLWCHandler.createLocationIdentifiers";
-import { IsConsoleNavigation, getFocusedTabInfo, refreshTab } from 'lightning/platformWorkspaceApi'
+import {
+    IsConsoleNavigation,
+    getFocusedTabInfo,
+    refreshTab
+} from "lightning/platformWorkspaceApi";
+import { RefreshEvent } from "lightning/refresh";
 
 export default class ZIpIntegrationLWC_EnterZip extends LightningElement {
     @wire(IsConsoleNavigation) isConsoleNavigation;
@@ -36,17 +41,18 @@ export default class ZIpIntegrationLWC_EnterZip extends LightningElement {
                 recordId: this.recordId
             })
                 .then((result) => {
-                    
                     this.savedRecId = result;
                     console.log(
                         JSON.stringify("Apex create result: " + result)
                     );
                     if (this.isConsoleNavigation) {
-                        getFocusedTabInfo().then((tabInfo) => {
-                            refreshTab(tabInfo.tabId);
-                        }).catch((error) => {
-                            console.log(error);
-                        });
+                        getFocusedTabInfo()
+                            .then((tabInfo) => {
+                                refreshTab(tabInfo.tabId);
+                            })
+                            .catch((error) => {
+                                console.log(error);
+                            });
                     }
                     this.showLoadingSpinner = false;
                     this.dispatchEvent(
@@ -56,12 +62,13 @@ export default class ZIpIntegrationLWC_EnterZip extends LightningElement {
                                 "Great success! Record Id: " + this.savedRecId,
                             variant: "success"
                         })
-                        
                     );
                 })
                 .catch((error) => {
                     window.console.log("ERROR ====> " + error);
                     this.showLoadingSpinner = false;
+                    this.savedRecId = "";
+                    this.dispatchEvent(new RefreshEvent());
                     this.dispatchEvent(
                         new ShowToastEvent({
                             title: "An error has occurred.",
@@ -71,6 +78,8 @@ export default class ZIpIntegrationLWC_EnterZip extends LightningElement {
                     );
                 });
         } else {
+            this.savedRecId = "";
+            this.dispatchEvent(new RefreshEvent());
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: "Input is invalid",
