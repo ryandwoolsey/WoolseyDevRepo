@@ -164,6 +164,30 @@
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
     <fields>
+        <fullName>City__c</fullName>
+        <externalId>false</externalId>
+        <label>City</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Country__c</fullName>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>LWCHandled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>LWCHandled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>State__c</fullName>
         <externalId>false</externalId>
         <label>State</label>
@@ -181,6 +205,21 @@
     </fields>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>City__c</columns>
+        <columns>Country__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATEDBY_USER.ALIAS</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>OWNER.ALIAS</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>OWNER.LAST_NAME</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>State__c</columns>
+        <columns>Zip_Code__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

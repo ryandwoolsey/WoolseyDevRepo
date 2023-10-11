@@ -14,10 +14,17 @@
         <name>ApexTrigger</name>
     </types>
     <types>
+        <members>purdueuniversityboilermakers5logopn</members>
+        <name>ContentAsset</name>
+    </types>
+    <types>
         <members>Purdue_Demonstration</members>
         <name>CustomApplication</name>
     </types>
     <types>
+        <members>Location_Identifier__c.City__c</members>
+        <members>Location_Identifier__c.Country__c</members>
+        <members>Location_Identifier__c.LWCHandled__c</members>
         <members>Location_Identifier__c.State__c</members>
         <members>Location_Identifier__c.Zip_Code__c</members>
         <members>ZipCodeAPIKey__mdt.apikey__c</members>
@@ -35,6 +42,15 @@
     <types>
         <members>Location_Identifier__c</members>
         <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Account_Record_Page</members>
+        <members>Contact_Record_Page</members>
+        <members>Home_Page_Default</members>
+        <members>Lead_Record_Page</members>
+        <members>LightningSales_UtilityBar</members>
+        <members>Purdue_Demonstration_UtilityBar</members>
+        <name>FlexiPage</name>
     </types>
     <types>
         <members>zIpIntegrationLWC_EnterZip</members>
