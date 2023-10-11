@@ -117,7 +117,8 @@ public class ZipIntegrationLWCHandler {
                     Id = recordId,
                     City = locIdent.City__c,
                     State = locIdent.State__c,
-                    Country = locIdent.Country__c
+                    Country = locIdent.Country__c,
+                    PostalCode = locIdent.Zip_Code__c
                 );
                 update l;
             }
@@ -126,7 +127,8 @@ public class ZipIntegrationLWCHandler {
                     Id = recordId,
                     MailingCity = locIdent.City__c,
                     MailingState = locIdent.State__c,
-                    MailingCountry = locIdent.Country__c
+                    MailingCountry = locIdent.Country__c,
+                    MailingPostalCode = locIdent.Zip_Code__c
                 );
                 update c;
             }
@@ -135,7 +137,8 @@ public class ZipIntegrationLWCHandler {
                     Id = recordId,
                     BillingCity = locIdent.City__c,
                     BillingState = locIdent.State__c,
-                    BillingCountry = locIdent.Country__c
+                    BillingCountry = locIdent.Country__c,
+                    BillingPostalCode = locIdent.Zip_Code__c
                 );
                 update a;
             }
