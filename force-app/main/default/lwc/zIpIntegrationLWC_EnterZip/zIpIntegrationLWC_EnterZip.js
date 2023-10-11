@@ -8,18 +8,31 @@ import {
 } from "lightning/platformWorkspaceApi";
 import { RefreshEvent } from "lightning/refresh";
 
+/**
+ * JavaScript for the Purdue Zipcode Integration. Meets requirement 3.
+ * Allows users to create Location Identifiers using ZIP codes.
+ * @extends LightningElement
+ */
 export default class ZIpIntegrationLWC_EnterZip extends LightningElement {
-    @wire(IsConsoleNavigation) isConsoleNavigation;
-    @track showLoadingSpinner = false;
-    @track zipCode;
-    @api objectApiName;
-    @api recordId;
-    savedRecId;
+    @wire(IsConsoleNavigation) isConsoleNavigation; // Determines if user is in a console app
+    @track showLoadingSpinner = false; // Controls the loading spinner visibility
+    @track zipCode; // Holds the ZIP code entered by the user
+    @api recordId; // Record ID passed from the parent component; used to update record if on record page.
+    savedRecId; // Holds the saved Location Identifier record ID
 
+    /**
+     * Handles changes in the input field and updates the zipCode property.
+     * @param {Event} event - The input change event.
+     */
     setZip(event) {
         this.zipCode = event.detail.value;
     }
 
+    /**
+     * Validates the input fields and returns true if they are all valid.
+     * If false, will not invoke LWC Handler class.
+     * @returns {boolean} - True if input is valid; otherwise, false.
+     */
     isInputValid() {
         let isValid = true;
         let inputFields = this.template.querySelectorAll("lightning-input");
@@ -33,6 +46,11 @@ export default class ZIpIntegrationLWC_EnterZip extends LightningElement {
         return isValid;
     }
 
+    /**
+     * Initiates the process of creating a Location Identifier record based on the entered ZIP code.
+     * Displays success or error messages and handles tab refreshing if applicable.
+     * @param {Event} event - The click event.
+     */
     createData(event) {
         if (this.isInputValid()) {
             this.showLoadingSpinner = true;
@@ -90,6 +108,19 @@ export default class ZIpIntegrationLWC_EnterZip extends LightningElement {
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+    
     /*
 
     createData() {
